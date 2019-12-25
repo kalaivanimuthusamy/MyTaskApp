@@ -1,0 +1,56 @@
+<h3>Create Tasks</h3>  
+<div class="row">  
+  <div class="col-sm-4"></div>  
+  <div class="col-sm-4" >  
+    <div [hidden]="submitted" style="width: 400px;">  
+      <form [formGroup]="taskssaveform" #savetasks (ngSubmit)="saveTasks(saveTasks)">  
+          <div class="form-group">  
+              <label for="name">Parent Id</label>  
+              <input type="number" class="form-control"  formControlName="pid" data-toggle="tooltip"   
+                 data-placement="right" title="Enter Parent Id" >                  
+          </div>  
+    
+          <div class="form-group">  
+              <label for="name">Task Name</label>  
+              <input type="text" class="form-control" formControlName="taskname"   
+                data-toggle="tooltip" data-placement="right" title="Enter Task Name">  
+                 
+          </div>  
+    
+          <div class="form-group">  
+            <label for="name">Priority</label>  
+            <input type="number" class="form-control"  formControlName="pri" data-toggle="tooltip"   
+               data-placement="right" title="Enter Priority" >                  
+        </div>
+
+        <div class="form-group">  
+          <label for="name">Start Date</label>  
+          <input type="text" class="form-control" formControlName="sdate"   
+            data-toggle="tooltip" data-placement="right" title="Enter Start Date">  
+             
+      </div>
+
+      <div class="form-group">  
+        <label for="name">End Date</label>  
+        <input type="text" class="form-control" formControlName="edate"   
+          data-toggle="tooltip" data-placement="right" title="Enter End date">  
+           
+    </div>
+            
+    
+          <button type="submit" class="btn btn-success">Submit</button>  
+      </form>  
+  </div>  
+  </div>  
+  <div class="col-sm-4"></div>  
+</div>  
+<div class="row">  
+  <div class="col-sm-4"></div>  
+  <div class="col-sm-4">  
+      <div [hidden]="!submitted">  
+         <h4>Tasks Added SuccessFully!</h4>  
+         <button (click)="addTasksForm()" class='btn btn-primary'>Add More Tasks</button>  
+      </div>        
+  </div>  
+  <div class="col-sm-4"></div>  
+</div> 

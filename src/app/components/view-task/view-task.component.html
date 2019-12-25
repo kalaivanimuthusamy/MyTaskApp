@@ -1,0 +1,129 @@
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+<h1 style="text-align: center">Search By All Fields </h1><br>
+  </div>
+  <input type="text" #search (change)="0" class="form-control" placeholder="Search for Tasks" aria-label="Username" aria-describedby="basic-addon1"/>
+  
+</div>
+
+  <div class="panel panel-default">  
+    <div class="panel-heading">  
+        <h1 style="text-align: center">Tasks</h1><br>  
+        <div class="row" [hidden]="!deleteMessage">  
+               
+                  <div class="col-sm-4"></div>  
+                  <div class="col-sm-4">  
+                          <div class="alert alert-info alert-dismissible">  
+                                  <button type="button" class="close" data-dismiss="alert">×</button>  
+                                  <strong>Task  Deleted</strong>  
+                          </div>  
+                  </div>  
+                  <div class="col-sm-4"></div>  
+          </div>             
+      </div>  
+    
+      
+    <div class="panel-body">  
+        <table >  
+            <thead class="thead-light">  
+                <tr>  
+                    <th>Task Id||</th>  
+                    <th>Parent Task||</th>  
+                    <th>Task name||</th>  
+                    <th>Priority||</th>
+                    <th>StartDate||</th> 
+                    <th>EndDate</th>   
+                      
+                </tr>  
+            </thead>  
+            <tbody>  
+                 <tr *ngFor="let task of tasksList | filterTasks:search.value ; let i = index; ">  
+                    <td>{{task.task_id}}</td>  
+                    <td>{{task.parent_id}}</td>  
+                    <td>{{task.task}}</td> 
+                    <td>{{task.priority}}</td>  
+                    <td>{{task.start_date}}</td>  
+                    <td>{{task.end_date}}</td>
+
+                    <td><button (click)="deleteTasks(task.task_id)" class='btn btn-primary'><i class="fa fa-futboll-0">Delete</i></button>   
+                      <button (click)="updateTasks(task.task_id)" class='btn btn-info'  
+                      >Update</button>  
+                    </td>  
+                  </tr>   
+            </tbody><br>  
+        </table>  
+    </div>  
+  </div>   
+    
+  <div  [hidden]="isupdated">  
+          <div>  
+            <div>  
+                  <form [formGroup]="tasksupdateform" #updtas (ngSubmit)="updateTas(updtas)">  
+              <!-- Modal Header -->  
+              <div>  
+                <h4 style="text-align: center">Update Tasks</h4>  
+                  
+              </div>  
+                
+              <!-- Modal body -->  
+              <div>  
+                  <div>  
+                    <!--<input type="hidden" class="form-control"  formControlName="task_id" [(ngModel)]="task.task_id">-->
+                    <div class="form-group">  
+                      <label for="name">Task Id</label>  
+                      <input type="number" class="form-control"  formControlName="task_id" data-toggle="tooltip"   
+                         data-placement="right" title="Enter task Id" value="">                  
+                  </div>
+                    <div class="form-group">  
+                      <label for="name">Parent Id</label>  
+                      <input type="number" class="form-control"  formControlName="pid" data-toggle="tooltip"   
+                         data-placement="right" title="Enter Parent Id" >                  
+                  </div>  
+            
+                  <div class="form-group">  
+                      <label for="name">Task Name</label>  
+                      <input type="text" class="form-control" formControlName="taskname"   
+                        data-toggle="tooltip" data-placement="right" title="Enter Task Name">  
+                         
+                  </div>  
+            
+                  <div class="form-group">  
+                    <label for="name">Priority</label>  
+                    <input type="number" class="form-control"  formControlName="pri" data-toggle="tooltip"   
+                       data-placement="right" title="Enter Priority" >                  
+                </div>
+        
+                <div class="form-group">  
+                  <label for="name">Start Date</label>  
+                  <input type="text" class="form-control" formControlName="sdate"   
+                    data-toggle="tooltip" data-placement="right" title="Enter Start Date">  
+                     
+              </div>
+        
+              <div class="form-group">  
+                <label for="name">End Date</label>  
+                <input type="text" class="form-control" formControlName="edate"   
+                  data-toggle="tooltip" data-placement="right" title="Enter End date">  
+                   
+            </div>
+                    
+            
+                    </div>    
+                    <div   [hidden]="isupdatedmsg">  
+                        <h4>Task Detail Updated!</h4>  
+                    </div>          
+                        
+              </div>  
+                
+              <!-- Modal footer -->  
+              <div >  
+                <button type="submit" class="btn btn-success">Update</button>  
+                 
+              </div>  
+                
+          </form>  
+            </div>  
+          </div>  
+        </div>
+
